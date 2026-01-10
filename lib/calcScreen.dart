@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:math_expressions/math_expressions.dart';
-import 'calcButton.dart';
+// import 'calcButton.dart';
+import 'buttonGrid.dart';
 
 class CalculatorScreen extends StatefulWidget {
   const CalculatorScreen({super.key});
@@ -62,7 +63,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Calculator'),
+        title: const Text('Calculator by Ya boi', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15)),
         centerTitle: true,
       ),
       body: Column(
@@ -107,41 +108,50 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
           // Button grid
           Expanded(
             flex: 4,
-            child: _buildButtonGrid(),
+            child: ButtonGrid(
+              buttons: [
+                ['C', '⌫', '%', '÷'],
+                ['7', '8', '9', '×'],
+                ['4', '5', '6', '-'],
+                ['1', '2', '3', '+'],
+                ['00', '0', '.', '='],
+              ],
+              onButtonPressed: _onButtonPressed,
+            ),
           ),
         ],
       ),
     );
   }
 
-  Widget _buildButtonGrid() {
-    final buttons = [
-      ['C', '⌫', '%', '÷'],
-      ['7', '8', '9', '×'],
-      ['4', '5', '6', '-'],
-      ['1', '2', '3', '+'],
-      ['00', '0', '.', '='],
-    ];
+  // Widget _buildButtonGrid() {
+  //   final buttons = [
+  //     ['C', '⌫', '%', '÷'],
+  //     ['7', '8', '9', '×'],
+  //     ['4', '5', '6', '-'],
+  //     ['1', '2', '3', '+'],
+  //     ['00', '0', '.', '='],
+  //   ];
 
-    return Column(
-      children: buttons.map((row) {
-        return Expanded(
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: row.map((buttonText) {
-              return Expanded(
-                child: CalcButton(
-                  text: buttonText,
-                  onPressed: () => _onButtonPressed(buttonText),
-                  backgroundColor: Colors.grey,
-                ),
-              );
-            }).toList(),
-          ),
-        );
-      }).toList(),
-    );
-  }
+  //   return Column(
+  //     children: buttons.map((row) {
+  //       return Expanded(
+  //         child: Row(
+  //           crossAxisAlignment: CrossAxisAlignment.stretch,
+  //           children: row.map((buttonText) {
+  //             return Expanded(
+  //               child: CalcButton(
+  //                 text: buttonText,
+  //                 onPressed: () => _onButtonPressed(buttonText),
+  //                 backgroundColor: Colors.grey,
+  //               ),
+  //             );
+  //           }).toList(),
+  //         ),
+  //       );
+  //     }).toList(),
+  //   );
+  // }
 
   // Widget _buildButton(String text) {
   //   // Determine button type for styling (adjust colors later)

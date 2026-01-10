@@ -13,27 +13,6 @@ class CalcButton extends StatelessWidget {
   });
 
   @override
-  // Widget build(BuildContext context) {
-  //   return Padding(
-  //     padding: const EdgeInsets.all(4.0),
-  //     child: ElevatedButton(
-  //       onPressed: onPressed,
-  //       style: ElevatedButton.styleFrom(
-  //         backgroundColor: backgroundColor,
-  //         shape: const CircleBorder(),
-  //         padding: const EdgeInsets.all(16),
-  //       ),
-  //       child: Text(
-  //         text,
-  //         style: TextStyle(
-  //           fontSize: 24,
-  //           color: textColor,
-  //         ),
-  //       ),
-  //     ),
-  //   );
-  // }
-
   Widget build(BuildContext context) {
     bool isOperator = ['÷', '×', '-', '+', '='].contains(text);
     bool isSpecial = ['C', '⌫', '%'].contains(text);
@@ -47,7 +26,7 @@ class CalcButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(12),
           ),
           backgroundColor: isOperator
-              ? Colors.yellow
+              ? Colors.blueAccent
               : isSpecial
                   ? Colors.grey[300]
                   : Colors.grey[100],
