@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:math_expressions/math_expressions.dart';
+import 'calcButton.dart';
 
 class CalculatorScreen extends StatefulWidget {
   const CalculatorScreen({super.key});
@@ -129,7 +130,11 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: row.map((buttonText) {
               return Expanded(
-                child: _buildButton(buttonText),
+                child: CalcButton(
+                  text: buttonText,
+                  onPressed: () => _onButtonPressed(buttonText),
+                  backgroundColor: Colors.grey,
+                ),
               );
             }).toList(),
           ),
@@ -138,32 +143,32 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
     );
   }
 
-  Widget _buildButton(String text) {
-    // Determine button type for styling (adjust colors later)
-    bool isOperator = ['÷', '×', '-', '+', '='].contains(text);
-    bool isSpecial = ['C', '⌫', '%'].contains(text);
+  // Widget _buildButton(String text) {
+  //   // Determine button type for styling (adjust colors later)
+  //   bool isOperator = ['÷', '×', '-', '+', '='].contains(text);
+  //   bool isSpecial = ['C', '⌫', '%'].contains(text);
 
-    return Padding(
-      padding: const EdgeInsets.all(4.0),
-      child: ElevatedButton(
-        onPressed: () => _onButtonPressed(text),
-        style: ElevatedButton.styleFrom(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
-          ),
-          // TODO: Customize these colors
-          backgroundColor: isOperator
-              ? Colors.blue
-              : isSpecial
-                  ? Colors.grey[300]
-                  : Colors.grey[100],
-          foregroundColor: isOperator ? Colors.white : Colors.black,
-        ),
-        child: Text(
-          text,
-          style: const TextStyle(fontSize: 24),
-        ),
-      ),
-    );
-  }
+  //   return Padding(
+  //     padding: const EdgeInsets.all(4.0),
+  //     child: ElevatedButton(
+  //       onPressed: () => _onButtonPressed(text),
+  //       style: ElevatedButton.styleFrom(
+  //         shape: RoundedRectangleBorder(
+  //           borderRadius: BorderRadius.circular(12),
+  //         ),
+  //         // TODO: Customize these colors
+  //         backgroundColor: isOperator
+  //             ? Colors.green
+  //             : isSpecial
+  //                 ? Colors.grey[300]
+  //                 : Colors.grey[100],
+  //         foregroundColor: isOperator ? Colors.white : Colors.black,
+  //       ),
+  //       child: Text(
+  //         text,
+  //         style: const TextStyle(fontSize: 24),
+  //       ),
+  //     ),
+  //   );
+  // }
 }
